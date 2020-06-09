@@ -1,0 +1,19 @@
+body {
+	background-color: #34495e;
+	margin: 30px;
+}
+
+.wrapper {
+	background-color: #95a5a6;
+	padding: 40px;
+	border-radius: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	padding-bottom: 20px;
+}
+
+form {
+	background-color: #95a5a6;
+}
