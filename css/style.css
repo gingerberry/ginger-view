@@ -1,0 +1,139 @@
+@font-face {
+	font-family: fuenFull;
+	src: url(../font/FEUEN___.TTF);
+}
+
+@font-face {
+	font-family: fuenHollow;
+	src: url(../font/FEUEON__.TTF);
+}
+
+@font-face {
+	font-family: bloggerSansMed;
+	src: url(../font/Blogger_Sans-Medium.otf);
+}
+
+body {
+	/*background: linear-gradient(to bottom right, #192a56, #40739e);*/
+	background: #192a56;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0 auto;
+	height: 100vh;
+	font-family: bloggerSansMed;
+}
+
+.logo {
+	font-family: fuenFull;
+	letter-spacing: 4px;
+}
+
+h1 {
+	font-size: 60px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+.wrapper {
+	padding: 100px 5%;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.card {
+	position: relative;
+	margin-bottom: 50px;
+	width: 400px;
+	border-radius: 10px;
+	background-color: #f5f6fa;
+	padding: 20px 40px;
+}
+
+.upload {
+	padding-bottom: 40px;
+}
+
+.card>.presentation-title {
+	font-size: 30px;
+	text-align: left;
+}
+
+.card>.presentation-view {
+	text-align: right;
+}
+
+.card>.col {
+	float: left;
+	width: 50%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.presentation:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.center {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.text-center {
+	text-align: center;
+}
+
+.white-color {
+	color: #f5f6fa;
+}
+
+.upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	cursor: pointer !important;
+}
+
+.btn {
+	margin-top: 20px;
+	border: 2px solid gray;
+	color: gray;
+	background-color: #f5f6fa;
+	padding: 8px 20px;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: bloggerSansMed;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+#submit-box {
+	margin-top: 40px;
+}
+
+.btn:hover {
+	border: 2px solid #e84118;
+	color: #e84118;
+}
+
+.upload-btn-wrapper:hover .btn {
+	border: 2px solid #e84118;
+	color: #e84118;
+}
+
+.upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.display-none {
+	display: none;
+}

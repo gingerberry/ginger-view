@@ -2,18 +2,36 @@
 
 <head>
 	<title>Gingerberry QR</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://kit.fontawesome.com/4e422dd393.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div class="wrapper">
-		<h1>Gingerberry QR</h1>
-		
-		<h3>Качване на презентация</h3>
-		<form enctype="multipart/form-data">
-			<input type="file" name="fileToUpload" id="fileToUpload">
-			<input type="submit" value="Post" onclick="onSelectFile()">
-		</form>
+		<div class="center text-center">
+			<h1 class="white-color logo">Gingerberry QR</h1>
+		</div>
+		<div class="card center text-center upload">
+			<form enctype="multipart/form-data">
 
+				<p id="picked-file-name-box"></p>
+
+				<div class="upload-btn-wrapper" id="pick-box">
+					<button class="btn"><i class="fas fa-file-powerpoint"></i> Изберете презентация</button>
+					<input type="file" name="fileToUpload" onchange="toggleSubmitBox();" id="pick-input">
+				</div>
+
+				<div id="submit-box">
+					<a class="btn" onclick="uploadPresentation();"><i class="fas fa-upload"></i> Качете
+						презентацията</a>
+				</div>
+			</form>
+		</div>
+		<div class="center text-center">
+			<h3 class="white-color">Скорошни презентации</h3>
+		</div>
+		<div id="presentation-list"></div>
 	</div>
+
+	<script src="js/index.js"></script>
 </body>
