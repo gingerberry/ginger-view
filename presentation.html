@@ -3,6 +3,7 @@
 <head>
 	<title>Gingerberry QR</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
 	<script src="https://kit.fontawesome.com/4e422dd393.js" crossorigin="anonymous"></script>
 </head>
 
@@ -13,7 +14,16 @@
 		</div>
 		<div class="card center text-center upload">
 			<div class="title" id="presentation-title"></div>
+
+			<div class="video-box">
+				<video controls id="video">
+					<source src="test.mp4" type="video/mp4">
+					Your browser does not support HTML video.
+				</video>
+			</div>
+
 			<div class="body">
+
 				<table id="slides">
 					<tr>
 						<th>Слайд</th>
@@ -25,20 +35,27 @@
 			<form enctype="multipart/form-data">
 
 				<p id="picked-file-name-box"></p>
-	
+
 				<div class="upload-btn-wrapper" id="pick-box">
 					<button class="btn"><i class="fas fa-video"></i> Изберете видео на презентация</button>
 					<input type="file" name="fileToUpload" onchange="toggleSubmitBox();" id="pick-input">
 				</div>
-	
+
 				<div id="submit-box">
 					<a class="btn" onclick="uploadPresentation();"><i class="fas fa-upload"></i> Качете
 						видеото</a>
 				</div>
 			</form>
 		</div>
+
+		<div id="modal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="modal-image">
+			<div id="caption"></div>
+		</div>
 	</div>
 
+	<script src="js/modal.js"></script>
 	<script src="js/presentation.js"></script>
 	<script src="js/file_button.js"></script>
 </body>

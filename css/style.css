@@ -59,11 +59,12 @@ tr:nth-child(even) {
 }
 
 td a {
-	color: #e84118;
+	color: #333;
 	cursor: pointer;
 }
 
 td a:hover {
+	color: #e84118;
 	text-decoration: underline;
 }
 
@@ -81,7 +82,7 @@ th {
 .card {
 	position: relative;
 	margin-bottom: 50px;
-	width: 400px;
+	width: 500px;
 	border-radius: 10px;
 	background-color: #f5f6fa;
 	padding: 20px 40px;
@@ -120,6 +121,16 @@ th {
 	width: 50%;
 	padding: 10px;
 	box-sizing: border-box;
+}
+
+.card .video-box {
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+.card .video-box video {
+	width: 100%;
+	border-radius: 8px;
 }
 
 .presentation:after {

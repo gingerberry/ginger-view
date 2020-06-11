@@ -16,12 +16,11 @@ function loadPresentations() {
         "id": "3"
       }
     ]
-  }
+  };
 
   presentations = presentations.presentations;
 
   for (let i = 0; i < presentations.length; i++) {
-    console.log(presentations[i].name);
     let item = getPresentationItem(presentations[i].name, presentations[i].id);
     presentationList.appendChild(item);
   }
@@ -59,9 +58,13 @@ function uploadPresentation() {
   };
 
   fetch("http://localhost:9090/gingerberry/api/v1/presentation", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    .then(function (response) {
+      if (response.ok || response.status === 0) {
+        window.location.replace("presentation.html?presentation=1");
+      }
+
+      console.log(response.text);
+    });
 }
 
 loadPresentations();
