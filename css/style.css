@@ -40,6 +40,38 @@ h3 {
 	font-size: 30px;
 }
 
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px 30px;
+}
+
+td:nth-last-child(1) {
+	text-align: right;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+td a {
+	color: #e84118;
+	cursor: pointer;
+}
+
+td a:hover {
+	text-decoration: underline;
+}
+
+th {
+	background-color: #e84118;
+	color: #f5f6fa;
+}
+
 .wrapper {
 	padding: 100px 5%;
 	width: 100%;
@@ -53,6 +85,21 @@ h3 {
 	border-radius: 10px;
 	background-color: #f5f6fa;
 	padding: 20px 40px;
+}
+
+.card .title {
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	font-size: 25px;
+	text-align: center;
+}
+
+.card .body {
+	text-align: left;
+}
+
+.card .body .row {
+	display: block;
 }
 
 .upload {
