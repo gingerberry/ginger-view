@@ -5,8 +5,9 @@ let captionText = document.getElementById("caption");
 
 function displaySlideImage() {
     modal.style.display = "block";
-    modalImg.src = "https://placekitten.com/600/600";
-    //captionText.innerHTML = img.alt;
+    let presentationID = getPresentationID();
+    modalImg.src = "http://localhost:8000/ginger/api/v1/presentation_image/" + presentationID + "/slide/0";
+    captionText.innerHTML = img.alt;
 }
 
 let span = document.getElementsByClassName("close")[0];

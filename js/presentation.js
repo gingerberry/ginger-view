@@ -3,36 +3,34 @@ let title = document.getElementById("presentation-title");
 let video = document.getElementById("video")
 
 function loadPresentation() {
-    let presentation = {
-        "id": 1,
-        "name": "Презентация за божи кравичките",
-        "slides": [
-            {
-                "id": 1,
-                "title": "Начало",
-                "startTime": 0,
-            },
-            {
-                "id": 2,
-                "title": "Какво са божи кравичките",
-                "startTime": 10,
-            },
-            {
-                "id": 3,
-                "title": "Конец",
-                "startTime": 23,
-            },
-        ]
+    let myHeaders = new Headers();
+    myHeaders.append("Cookie", "PHPSESSID=33393b76229fd922c018b19ec09cedae");
+
+    let requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
     };
 
-    title.textContent = presentation.name;
+    let presentationID = getPresentationID();
 
-    let slides = presentation.slides;
+    fetch("http://localhost:8000/ginger/api/v1/presentation/" + presentationID, requestOptions)
+        .then(response => response.json())
+        .then(function (result) {
+            title.textContent = result.name;
+            let slides = result.slides;
 
-    for(let i = 0; i < slides.length; i++) {
-        let item = getSlideRow(slides[i].title, slides[i].id, slides[i].startTime);
-        slidesContainer.appendChild(item);
-    }
+            for (let i = 0; i < slides.length; i++) {
+                let item = getSlideRow(slides[i].title, slides[i].id, slides[i].start_sec);
+                slidesContainer.appendChild(item);
+            }
+        })
+        .catch(error => console.log('error', error));
+}
+
+function loadVideoSource() {
+    let video = document.getElementById('video');
+    video.src = "http://localhost:8000/ginger/api/v1/video/" + getPresentationID();
 }
 
 function getSlideRow(slideTitle, slideID, slideTS) {
@@ -41,12 +39,34 @@ function getSlideRow(slideTitle, slideID, slideTS) {
     let numTD = getTD(slideTitle);
     row.appendChild(numTD);
 
-    let imageLink = "<a onClick='displaySlideImage();'><i class='fas fa-eye'></i> Изображение</a>";
-    let videoJumpLink = "<a onClick='jumpToTimestamp(" + slideTS + ");'><i class='fas fa-play'></i> Видео</a>";
+    let imageLink = "<a onClick='displaySlideImage();'><i class='fas fa-eye'></i></a>";
+    let videoJumpLink = "<a onClick='jumpToTimestamp(" + slideTS + ");'><i class='fas fa-play'></i></a>";
     let linkTD = getTD(videoJumpLink + " " + imageLink);
     row.appendChild(linkTD);
 
     return row;
+}
+
+function uploadVideo() {
+    let myHeaders = new Headers();
+    myHeaders.append("Cookie", "PHPSESSID=2d126bb440fdf224e21f1b26415fbec1");
+
+    let formdata = new FormData();
+    formdata.append("video", pickInput.files[0], extractFilename());
+
+    let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    let presentationID = getPresentationID();
+
+    fetch("http://localhost:8000/ginger/api/v1/video/" + presentationID, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function getTD(content) {
@@ -60,4 +80,12 @@ function jumpToTimestamp(sec) {
     video.currentTime = sec;
 }
 
+function getPresentationID() {
+    let url = new URL(window.location.href);
+    let presentationID = url.searchParams.get("presentation");
+
+    return presentationID;
+}
+
 loadPresentation();
+loadVideoSource();

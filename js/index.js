@@ -1,29 +1,26 @@
 function loadPresentations() {
   let presentationList = document.getElementById("presentation-list");
 
-  let presentations = {
-    "presentations": [
-      {
-        "name": "To Valhalla",
-        "id": "1"
-      },
-      {
-        "name": "Another mocked presentation",
-        "id": "2"
-      },
-      {
-        "name": "Train parts",
-        "id": "3"
-      }
-    ]
+  let myHeaders = new Headers();
+  myHeaders.append("Cookie", "PHPSESSID=33393b76229fd922c018b19ec09cedae");
+
+  let requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
   };
 
-  presentations = presentations.presentations;
+  fetch("http://localhost:8000/ginger/api/v1/recentPresentations", requestOptions)
+    .then(response => response.json())
+    .then(function (result) {
+      let presentations = result.presentations;
 
-  for (let i = 0; i < presentations.length; i++) {
-    let item = getPresentationItem(presentations[i].name, presentations[i].id);
-    presentationList.appendChild(item);
-  }
+      for (let i = 0; i < presentations.length; i++) {
+        let item = getPresentationItem(presentations[i].name, presentations[i].id);
+        presentationList.appendChild(item);
+      }
+    })
+    .catch(error => console.log('error', error));
 }
 
 function getPresentationItem(name, id) {
