@@ -30,13 +30,35 @@ function togglePickBox() {
 function loadPresentations() {
   let presentationList = document.getElementById("presentation-list");
 
-  for (let i = 0; i < 3; i++) {
-    let item = getPresentationItem();
+  let presentations = {
+    "presentations": [
+      {
+        "name": "To Valhalla",
+        "id": "1"
+      },
+      {
+        "name": "Another mocked presentation",
+        "id": "2"
+      },
+      {
+        "name": "Train parts",
+        "id": "3"
+      }
+    ]
+  }
+
+  presentations = presentations.presentations;
+
+  for (let i = 0; i < presentations.length; i++) {
+    console.log(presentations[i].name);
+    let item = getPresentationItem(presentations[i].name, presentations[i].id);
     presentationList.appendChild(item);
   }
 }
 
-function getPresentationItem() {
+
+
+function getPresentationItem(name, id) {
   let item = document.createElement("div");
   item.className = "card center presentation";
 
@@ -44,13 +66,14 @@ function getPresentationItem() {
   title.className = "col presentation-title";
   item.appendChild(title);
 
-  title.textContent = "New Title";
+  title.textContent = name;
 
   let view = document.createElement("div");
   view.className = "col presentation-view";
   item.appendChild(view);
 
-  view.innerHTML = "<a class='btn'><i class='fa fa-eye' aria-hidden='true'></i> Преглед</a>";
+  let link = "presentation.html?presentation=" + id;
+  view.innerHTML = "<a href='" + link + "' class='btn'><i class='fa fa-eye' aria-hidden='true'></i> Преглед</a>";
 
   return item;
 }

@@ -23,6 +23,10 @@ body {
 	font-family: bloggerSansMed;
 }
 
+a {
+	text-decoration: none;
+}
+
 .logo {
 	font-family: fuenFull;
 	letter-spacing: 4px;
@@ -56,7 +60,7 @@ h3 {
 }
 
 .card>.presentation-title {
-	font-size: 30px;
+	font-size: 20px;
 	text-align: left;
 }
 
