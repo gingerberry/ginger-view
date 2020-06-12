@@ -3,11 +3,12 @@ let modal = document.getElementById("modal");
 let modalImg = document.getElementById("modal-image");
 let captionText = document.getElementById("caption");
 
-function displaySlideImage() {
+function displaySlideImage(serialNum) {
     modal.style.display = "block";
     let presentationID = getPresentationID();
-    modalImg.src = "http://localhost:8000/ginger/api/v1/presentation_image/" + presentationID + "/slide/0";
-    captionText.innerHTML = img.alt;
+    let bucket = "gingerberry";
+
+    modalImg.src = "https://" + bucket + ".s3.amazonaws.com/presentation/" + presentationID + "/" + serialNum + ".png";
 }
 
 let span = document.getElementsByClassName("close")[0];

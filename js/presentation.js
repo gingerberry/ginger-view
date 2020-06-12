@@ -21,7 +21,7 @@ function loadPresentation() {
             let slides = result.slides;
 
             for (let i = 0; i < slides.length; i++) {
-                let item = getSlideRow(slides[i].title, slides[i].id, slides[i].start_sec);
+                let item = getSlideRow(slides[i].title, i, slides[i].start_sec);
                 slidesContainer.appendChild(item);
             }
         })
@@ -29,17 +29,20 @@ function loadPresentation() {
 }
 
 function loadVideoSource() {
+    let id = getPresentationID();
+    let bucket = "gingerberry";
+
     let video = document.getElementById('video');
-    video.src = "http://localhost:8000/ginger/api/v1/video/" + getPresentationID();
+    video.src = "https://" + bucket + ".s3.amazonaws.com/presentation/" + id + "/" + id + ".mp4";
 }
 
-function getSlideRow(slideTitle, slideID, slideTS) {
+function getSlideRow(slideTitle, serialNum, slideTS) {
     let row = document.createElement("tr");
 
     let numTD = getTD(slideTitle);
     row.appendChild(numTD);
 
-    let imageLink = "<a onClick='displaySlideImage();'><i class='fas fa-eye'></i></a>";
+    let imageLink = "<a onclick='displaySlideImage(" + serialNum + ");' id='slide-img-" + serialNum + "'><i class='fas fa-eye'></i></a>";
     let videoJumpLink = "<a onClick='jumpToTimestamp(" + slideTS + ");'><i class='fas fa-play'></i></a>";
     let linkTD = getTD(videoJumpLink + " " + imageLink);
     row.appendChild(linkTD);
