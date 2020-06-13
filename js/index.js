@@ -10,7 +10,7 @@ function loadPresentations() {
     redirect: 'follow'
   };
 
-  fetch("http://localhost:8000/gingerberry/ginger/api/v1/recentPresentations", requestOptions)
+  fetch("http://" + host + ":" + bottomPort + "/gingerberry/ginger/api/v1/recentPresentations", requestOptions)
     .then(response => response.json())
     .then(function (result) {
       let presentations = result.presentations;
@@ -69,7 +69,7 @@ function uploadPresentation() {
     redirect: 'follow'
   };
 
-  fetch("http://localhost:9090/gingerberry/api/v1/presentation", requestOptions)
+  fetch("http://" + host + ":" + topPort + "/gingerberry/api/v1/presentation", requestOptions)
     .then(function (response) {
       if (response.ok) {
         return response.json()

@@ -16,7 +16,7 @@ function loadPresentation() {
 
     let presentationID = getPresentationID();
 
-    fetch("http://localhost:8000/gingerberry/ginger/api/v1/presentation/" + presentationID, requestOptions)
+    fetch("http://" + host + ":" + bottomPort + "/gingerberry/ginger/api/v1/presentation/" + presentationID, requestOptions)
         .then(response => response.json())
         .then(function (result) {
             title.textContent = result.name;
@@ -88,7 +88,7 @@ function uploadVideo() {
 
     let presentationID = getPresentationID();
 
-    fetch("http://localhost:8000/gingerberry/ginger/api/v1/video/" + presentationID, requestOptions)
+    fetch("http://" + host + ":" + bottomPort + "/gingerberry/ginger/api/v1/video/" + presentationID, requestOptions)
         .then(response => response.text())
         .then(function (result) {
             console.log(result);
