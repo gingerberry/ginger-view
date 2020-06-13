@@ -47,8 +47,8 @@ function uploadPresentation() {
   let fileName = extractFilename();
   let extension = getFileExtension(fileName);
 
-  if (extension !== "ppt" && extension != "pptx") {
-    writeToErrorBox("Очаквахме да получим .pptx и .ppt, но получихме ." + extension + " файл.");
+  if (extension != "pptx") {
+    writeToErrorBox("Очаквахме да получим .pptx, но получихме ." + extension + " файл.");
 
     // Return to initial state.
     togglePickBox();
