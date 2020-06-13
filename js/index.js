@@ -10,7 +10,7 @@ function loadPresentations() {
     redirect: 'follow'
   };
 
-  fetch("http://localhost:8000/ginger/api/v1/recentPresentations", requestOptions)
+  fetch("http://localhost:8000/gingerberry/ginger/api/v1/recentPresentations", requestOptions)
     .then(response => response.json())
     .then(function (result) {
       let presentations = result.presentations;

@@ -5,6 +5,8 @@ let video = document.getElementById("video")
 function loadPresentation() {
     let myHeaders = new Headers();
     myHeaders.append("Cookie", "PHPSESSID=33393b76229fd922c018b19ec09cedae");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append('Access-Control-Allow-Headers', "*");
 
     let requestOptions = {
         method: 'GET',
@@ -14,7 +16,7 @@ function loadPresentation() {
 
     let presentationID = getPresentationID();
 
-    fetch("http://localhost:8000/ginger/api/v1/presentation/" + presentationID, requestOptions)
+    fetch("http://localhost:8000/gingerberry/ginger/api/v1/presentation/" + presentationID, requestOptions)
         .then(response => response.json())
         .then(function (result) {
             title.textContent = result.name;
@@ -86,7 +88,7 @@ function uploadVideo() {
 
     let presentationID = getPresentationID();
 
-    fetch("http://localhost:8000/ginger/api/v1/video/" + presentationID, requestOptions)
+    fetch("http://localhost:8000/gingerberry/ginger/api/v1/video/" + presentationID, requestOptions)
         .then(response => response.text())
         .then(function (result) {
             console.log(result);
