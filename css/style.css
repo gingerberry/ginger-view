@@ -205,3 +205,11 @@ th {
 	margin-top: 25px;
 	display: none;
 }
+
+#error-box {
+	padding: 15px;
+	border-radius: 8px;
+	display: none;
+	background-color: #e84118;
+	color: #f5f6fa;
+}

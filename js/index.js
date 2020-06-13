@@ -44,10 +44,24 @@ function getPresentationItem(name, id) {
 }
 
 function uploadPresentation() {
+  let fileName = extractFilename();
+  let extension = getFileExtension(fileName);
+
+  if (extension !== "ppt" && extension != "pptx") {
+    writeToErrorBox("Очаквахме да получим .pptx и .ppt, но получихме ." + extension + " файл.");
+
+    // Return to initial state.
+    togglePickBox();
+    return;
+  } else {
+    hideErrorBox();
+  }
+
   let loadBox = document.getElementById("wait-box");
   loadBox.style.display = "block";
+
   let formdata = new FormData();
-  formdata.append("presentation", pickInput.files[0], extractFilename());
+  formdata.append("presentation", pickInput.files[0], fileName);
 
   let requestOptions = {
     method: 'POST',
@@ -56,7 +70,13 @@ function uploadPresentation() {
   };
 
   fetch("http://localhost:9090/gingerberry/api/v1/presentation", requestOptions)
-    .then(response => response.json())
+    .then(function (response) {
+      if (response.ok) {
+        return response.json()
+      } else {
+        alert("We pooped");
+      }
+    })
     .then(result => window.location.replace("presentation.html?presentation=" + result.id))
     .catch(error => console.log('error', error));
 }

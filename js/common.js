@@ -15,6 +15,11 @@ function extractFilename() {
     return filename;
 }
 
+function getFileExtension(fileName) {
+    let chunks = fileName.split(".");
+    return chunks[chunks.length - 1];
+}
+
 function toggleSubmitBox() {
     let fileName = extractFilename();
     pickedFileNameBox.textContent = "Избран файл: " + fileName;
@@ -25,6 +30,17 @@ function toggleSubmitBox() {
 function togglePickBox() {
     pickBox.style.display = "block";
     submitBox.style.display = "none";
+}
+
+function writeToErrorBox(message) {
+    let errorBox = document.getElementById("error-box");
+    errorBox.style.display = "block";
+    errorBox.textContent = message;
+}
+
+function hideErrorBox() {
+    let errorBox = document.getElementById("error-box");
+    errorBox.style.display = "none";
 }
 
 togglePickBox();

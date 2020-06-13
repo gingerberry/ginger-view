@@ -2,14 +2,18 @@
 
 <head>
 	<title>Gingerberry QR</title>
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico"/>
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
 	<script src="https://kit.fontawesome.com/4e422dd393.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div class="wrapper">
 		<div class="center text-center">
-			<h1 class="white-color logo"><a href="index.html" class="white-color"><i class="fas fa-film"></i>Gingerberry QR</a></h1>
+			<h1 class="white-color logo"><a href="index.html" class="white-color"><i class="fas fa-film"></i>Gingerberry
+					QR</a></h1>
 		</div>
 		<div class="card center text-center upload">
 			<form enctype="multipart/form-data">
@@ -27,9 +31,12 @@
 				</div>
 				<div id="wait-box">
 					<img src="img/loading.gif" width="40">
-					<p>PS - Качването и обработката на презентация може да отнеме известно време. Грабнете чаша чай докато чакате <i class="fas fa-mug-hot"></i></p>
+					<p>PS - Качването и обработката на презентация може да отнеме известно време. Грабнете чаша чай
+						докато чакате <i class="fas fa-mug-hot"></i></p>
 				</div>
-				<p>Бележка - Презентации направени чрез ms office различен от този за windows може да не работят коректно.</p>
+				<p>Бележка - Презентации направени чрез ms office различен от този за windows може да не работят
+					коректно. Преръчва се използването на .pptx.</p>
+				<div id="error-box"></div>
 			</form>
 		</div>
 		<div class="center text-center">
@@ -38,6 +45,6 @@
 		<div id="presentation-list"></div>
 	</div>
 
+	<script src="js/common.js"></script>
 	<script src="js/index.js"></script>
-	<script src="js/file_button.js"></script>
 </body>

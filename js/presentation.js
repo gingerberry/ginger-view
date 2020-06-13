@@ -55,6 +55,19 @@ function getSlideRow(slideTitle, serialNum, slideTS) {
 }
 
 function uploadVideo() {
+    let fileName = extractFilename();
+    let extension = getFileExtension(fileName);
+
+    if (extension !== "mp4") {
+        writeToErrorBox("Очаквахме да получим .mp4, но получихме ." + extension + " файл.");
+
+        // Return to initial state.
+        togglePickBox();
+        return;
+    } else {
+        hideErrorBox();
+    }
+
     let loadBox = document.getElementById("wait-box");
     loadBox.style.display = "block";
 
@@ -75,11 +88,11 @@ function uploadVideo() {
 
     fetch("http://localhost:8000/ginger/api/v1/video/" + presentationID, requestOptions)
         .then(response => response.text())
-        .then(function(result) {
+        .then(function (result) {
             console.log(result);
-            window.location.reload(false); 
+            window.location.reload(false);
         })
-        .catch(error => console.log('error', error));    
+        .catch(error => console.log('error', error));
 }
 
 function getTD(content) {
