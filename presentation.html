@@ -12,14 +12,15 @@
 <body>
 	<div class="wrapper">
 		<div class="center text-center">
-			<h1 class="white-color logo"><a href="index.html" class="white-color"><i class="fas fa-film"></i>Gingerberry QR</a></h1>
+			<h1 class="white-color logo"><a href="index.html" class="white-color"><i class="fas fa-film"></i>Gingerberry
+					QR</a></h1>
 		</div>
 		<div class="card center text-center upload">
 			<div class="title" id="presentation-title"></div>
 
 			<div class="video-box">
 				<video controls id="video">
-					<source src="test.mp4" type="video/mp4">
+					<source type="video/mp4">
 					Your browser does not support HTML video.
 				</video>
 			</div>
@@ -47,7 +48,11 @@
 					<a class="btn" onclick="uploadVideo();"><i class="fas fa-upload"></i> Качете
 						видеото</a>
 				</div>
-				<p>PS - ММоля бъдете търпеливи. Едно обработване на 2-минутно видео отнема около 2 минути. Щом е готово ще бъдете препратени.</p>
+				<div id="wait-box">
+					<img src="img/loading.gif" width="40">
+					<p>PS - Обработване на видео с дължина минута отнема около минута. Трябва ни време да помислим <i class="fas fa-brain"></i></p>
+				</div>
+				<p>Бележка - Може да презапишете предното видео ако не ви харесва <i class="fas fa-sync-alt"></i></p>
 			</form>
 		</div>
 

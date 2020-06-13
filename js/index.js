@@ -44,24 +44,21 @@ function getPresentationItem(name, id) {
 }
 
 function uploadPresentation() {
+  let loadBox = document.getElementById("wait-box");
+  loadBox.style.display = "block";
   let formdata = new FormData();
   formdata.append("presentation", pickInput.files[0], extractFilename());
 
   let requestOptions = {
     method: 'POST',
-    mode: 'no-cors',
     body: formdata,
     redirect: 'follow'
   };
 
   fetch("http://localhost:9090/gingerberry/api/v1/presentation", requestOptions)
-    .then(function (response) {
-      if (response.ok || response.status === 0) {
-        window.location.replace("presentation.html?presentation=1");
-      }
-
-      console.log(response.text);
-    });
+    .then(response => response.json())
+    .then(result => window.location.replace("presentation.html?presentation=" + result.id))
+    .catch(error => console.log('error', error));
 }
 
 loadPresentations();

@@ -21,11 +21,15 @@
 					<input type="file" name="fileToUpload" onchange="toggleSubmitBox();" id="pick-input">
 				</div>
 
-				<div id="submit-box">
+				<div id="submit-box" class="video-jump">
 					<a class="btn" onclick="uploadPresentation();"><i class="fas fa-upload"></i> Качете
 						презентацията</a>
 				</div>
-				<p>PS - Може да отнеме около минута. Моля бъдете търпеливи. Щом е готово ще бъдете препратени.</p>
+				<div id="wait-box">
+					<img src="img/loading.gif" width="40">
+					<p>PS - Качването и обработката на презентация може да отнеме известно време. Грабнете чаша чай докато чакате <i class="fas fa-mug-hot"></i></p>
+				</div>
+				<p>Бележка - Презентации направени чрез ms office различен от този за windows може да не работят коректно.</p>
 			</form>
 		</div>
 		<div class="center text-center">

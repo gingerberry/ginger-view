@@ -200,3 +200,8 @@ th {
 .display-none {
 	display: none;
 }
+
+#wait-box {
+	margin-top: 25px;
+	display: none;
+}

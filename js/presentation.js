@@ -34,6 +34,10 @@ function loadVideoSource() {
 
     let video = document.getElementById('video');
     video.src = "https://" + bucket + ".s3.amazonaws.com/presentation/" + id + "/" + id + ".mp4";
+
+    video.onerror = function () {
+        video.style.display = "none";
+    }
 }
 
 function getSlideRow(slideTitle, serialNum, slideTS) {
@@ -42,8 +46,8 @@ function getSlideRow(slideTitle, serialNum, slideTS) {
     let numTD = getTD(slideTitle);
     row.appendChild(numTD);
 
-    let imageLink = "<a onclick='displaySlideImage(" + serialNum + ");' id='slide-img-" + serialNum + "'><i class='fas fa-eye'></i></a>";
-    let videoJumpLink = "<a onClick='jumpToTimestamp(" + slideTS + ");'><i class='fas fa-play'></i></a>";
+    let imageLink = "<a onclick='displaySlideImage(" + serialNum + ");'><i class='fas fa-eye'></i></a>";
+    let videoJumpLink = "<a class='video-jump' onclick='jumpToTimestamp(" + slideTS + ");'><i class='fas fa-play'></i></a>";
     let linkTD = getTD(videoJumpLink + " " + imageLink);
     row.appendChild(linkTD);
 
@@ -51,6 +55,9 @@ function getSlideRow(slideTitle, serialNum, slideTS) {
 }
 
 function uploadVideo() {
+    let loadBox = document.getElementById("wait-box");
+    loadBox.style.display = "block";
+
     let myHeaders = new Headers();
     myHeaders.append("Cookie", "PHPSESSID=2d126bb440fdf224e21f1b26415fbec1");
 
@@ -68,8 +75,11 @@ function uploadVideo() {
 
     fetch("http://localhost:8000/ginger/api/v1/video/" + presentationID, requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(function(result) {
+            console.log(result);
+            window.location.reload(false); 
+        })
+        .catch(error => console.log('error', error));    
 }
 
 function getTD(content) {
