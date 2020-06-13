@@ -213,3 +213,7 @@ th {
 	background-color: #e84118;
 	color: #f5f6fa;
 }
+
+table#slides {
+	margin-bottom: 70px;
+}

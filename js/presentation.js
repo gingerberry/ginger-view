@@ -95,6 +95,14 @@ function uploadVideo() {
         .catch(error => console.log('error', error));
 }
 
+function setUpPresentationLink() {
+    let downloadLink = document.getElementById("download-presentation");
+    let id = getPresentationID();
+    let bucket = "gingerberry";
+
+    downloadLink.href = "https://" + bucket + ".s3.amazonaws.com/presentation/" + id + "/" + id + ".pptx";
+}
+
 function getTD(content) {
     let td = document.createElement("td");
     td.innerHTML = content;
@@ -115,3 +123,4 @@ function getPresentationID() {
 
 loadPresentation();
 loadVideoSource();
+setUpPresentationLink();
