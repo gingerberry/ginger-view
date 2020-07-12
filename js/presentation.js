@@ -32,10 +32,14 @@ function loadPresentation() {
 
 function loadVideoSource() {
     let id = getPresentationID();
-    let bucket = "gingerberry";
 
     let video = document.getElementById('video');
-    video.src = "https://" + bucket + ".s3.amazonaws.com/presentation/" + id + "/" + id + ".mp4";
+
+    if (s3BucketName !== "") {
+        video.src = "https://" + s3BucketName + ".s3.amazonaws.com/presentation/" + id + "/" + id + ".mp4";
+    } else {
+        video.src = "http://" + host + ":" + bottomPort + "/" + localStorage + "/presentation/" + id + "/" + id + ".mp4";
+    }
 
     video.onerror = function () {
         video.style.display = "none";
@@ -102,7 +106,11 @@ function setUpPresentationLink() {
     let id = getPresentationID();
     let bucket = "gingerberry";
 
-    downloadLink.href = "https://" + bucket + ".s3.amazonaws.com/presentation/" + id + "/" + id + ".pptx";
+    if (s3BucketName !== "") {
+        downloadLink.href = "https://" + bucket + ".s3.amazonaws.com/presentation/" + id + "/" + id + ".pptx";
+    } else {
+        downloadLink.href = "http://" + host + ":" + bottomPort + "/" + localStorage + "/presentation/" + id + "/" + id + ".pptx";
+    }
 }
 
 function getTD(content) {

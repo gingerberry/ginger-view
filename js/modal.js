@@ -8,7 +8,11 @@ function displaySlideImage(serialNum) {
     let presentationID = getPresentationID();
     let bucket = "gingerberry";
 
-    modalImg.src = "https://" + bucket + ".s3.amazonaws.com/presentation/" + presentationID + "/" + serialNum + ".png";
+    if (s3BucketName !== "") {
+        modalImg.src = "https://" + bucket + ".s3.amazonaws.com/presentation/" + presentationID + "/" + serialNum + ".png";
+    } else {
+        modalImg.src = "http://" + host + ":" + bottomPort + "/" + localStorage + "/presentation/" + presentationID + "/" + serialNum + ".png";
+    }
 }
 
 let span = document.getElementsByClassName("close")[0];
